@@ -25,7 +25,7 @@ namespace VerbalExpressionsUnitTests
             //Arrange
             var verbEx = VerbalExpressions.DefaultExpression;
             string value = "*+?";
-            string result = string.Empty;
+            string result;
             string expected = @"\*\+\?";
 
             //Act

@@ -37,11 +37,11 @@ namespace CSharpVerbalExpressions
         #region Private Members
 
         private readonly RegexCache regexCache = new RegexCache();
-        private StringBuilder _prefixes = new StringBuilder();
-        private StringBuilder _source = new StringBuilder();
-        private StringBuilder _suffixes = new StringBuilder();
+        private StringBuilder prefixes = new StringBuilder();
+        private StringBuilder source = new StringBuilder();
+        private StringBuilder suffixes = new StringBuilder();
 
-        private RegexOptions _modifiers = RegexOptions.Multiline;
+        private RegexOptions modifiers = RegexOptions.Multiline;
         
         #endregion Private Members
 
@@ -49,12 +49,12 @@ namespace CSharpVerbalExpressions
 
         private string RegexString
         {
-            get { return new StringBuilder().Append(_prefixes).Append(_source).Append(_suffixes).ToString();}
+            get { return new StringBuilder().Append(prefixes).Append(source).Append(suffixes).ToString();}
         }
 
         private Regex PatternRegex
         {
-            get { return regexCache.Get(this.RegexString, _modifiers); }
+            get { return regexCache.Get(this.RegexString, modifiers); }
         }
 
         #endregion Private Properties
@@ -127,19 +127,19 @@ namespace CSharpVerbalExpressions
                 throw new ArgumentNullException("value must be provided");
 
             value = sanitize ? Sanitize(value) : value;
-            _source.Append(value);
+            source.Append(value);
             return this;
         }
 
         public VerbalExpressions StartOfLine(bool enable = true)
         {
-            _prefixes.Append(enable ? "^" : String.Empty);
+            prefixes.Append(enable ? "^" : String.Empty);
             return this;
         }
 
         public VerbalExpressions EndOfLine(bool enable = true)
         {
-            _suffixes.Append(enable ? "$" : String.Empty);
+            suffixes.Append(enable ? "$" : String.Empty);
             return this;
         }
 
@@ -202,7 +202,7 @@ namespace CSharpVerbalExpressions
 
             if (whereToReplace.Length != 0)
             {
-                _source.Replace(whereToReplace, value);
+                source.Replace(whereToReplace, value);
             }
 
             return this;
@@ -331,9 +331,9 @@ namespace CSharpVerbalExpressions
 
         public VerbalExpressions Or(string value, bool sanitize = true)
         {
-            _prefixes.Append("(");
-            _suffixes.Insert(0, ")");
-            _source.Append(")|(");
+            prefixes.Append("(");
+            suffixes.Insert(0, ")");
+            source.Append(")|(");
             return Add(value, sanitize);
         }
 
@@ -371,16 +371,16 @@ namespace CSharpVerbalExpressions
             switch (modifier)
             {
                 case 'i':
-                    _modifiers |= RegexOptions.IgnoreCase;
+                    modifiers |= RegexOptions.IgnoreCase;
                     break;
                 case 'x':
-                    _modifiers |= RegexOptions.IgnorePatternWhitespace;
+                    modifiers |= RegexOptions.IgnorePatternWhitespace;
                     break;
                 case 'm':
-                    _modifiers |= RegexOptions.Multiline;
+                    modifiers |= RegexOptions.Multiline;
                     break;
                 case 's':
-                    _modifiers |= RegexOptions.Singleline;
+                    modifiers |= RegexOptions.Singleline;
                     break;
             }
 
@@ -392,16 +392,16 @@ namespace CSharpVerbalExpressions
             switch (modifier)
             {
                 case 'i':
-                    _modifiers &= ~RegexOptions.IgnoreCase;
+                    modifiers &= ~RegexOptions.IgnoreCase;
                     break;
                 case 'x':
-                    _modifiers &= ~RegexOptions.IgnorePatternWhitespace;
+                    modifiers &= ~RegexOptions.IgnorePatternWhitespace;
                     break;
                 case 'm':
-                    _modifiers &= ~RegexOptions.Multiline;
+                    modifiers &= ~RegexOptions.Multiline;
                     break;
                 case 's':
-                    _modifiers &= ~RegexOptions.Singleline;
+                    modifiers &= ~RegexOptions.Singleline;
                     break;
             }
 
@@ -437,7 +437,7 @@ namespace CSharpVerbalExpressions
 
         public VerbalExpressions WithOptions(RegexOptions options)
         {
-            this._modifiers = options;
+            this.modifiers = options;
             return this;
         }
 
