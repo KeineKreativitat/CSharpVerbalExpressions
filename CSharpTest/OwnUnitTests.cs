@@ -22,5 +22,20 @@ namespace CSharpTest
             var r = rc.Get("pista", RegexOptions.Multiline);
             Assert.IsTrue(r.Options == RegexOptions.Multiline);
         }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        public void VerbalExpressionAddMethodTest()
+        {
+            VerbalExpressions ve = new VerbalExpressions();
+            Assert.Throws<ArgumentNullException>(() => ve.Add(null, true));
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        public void VerbalExpressionCaptureMethodTest()
+        {
+            VerbalExpressions ve = new VerbalExpressions();
+            var r =  ve.Capture("", "Jozsi");
+            Assert.IsNotNull(r);
+        }
     }
 }
