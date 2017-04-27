@@ -5,10 +5,10 @@ using NUnit.Framework;
 namespace VerbalExpressionsUnitTests
 {
 
-    [TestFixture]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
     public class SomethingButTests
     {
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void SomethingBut_EmptyStringAsParameter_DoesNotMatch()
         {
             // Arange
@@ -22,7 +22,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsFalse(isMatch, "Test string should be empty.");
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void SomethingBut_NullAsParameter_Throws()
         {
             // Arange
@@ -33,7 +33,7 @@ namespace VerbalExpressionsUnitTests
             Assert.Throws<ArgumentNullException>(() => verbEx.IsMatch(testString));
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void SomethingBut_TestStringStartsCorrect_DoesMatch()
         {
             // Arange
@@ -48,7 +48,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsTrue(isMatch, "Test string should not be empty and starts with \"" + START_STRING + "\".");
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void SomethingBut_TestStringStartsIncorrect_DoesNotMatch()
         {
             // Arange

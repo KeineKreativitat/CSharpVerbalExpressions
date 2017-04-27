@@ -5,10 +5,10 @@ using NUnit.Framework;
 namespace VerbalExpressionsUnitTests
 {
 
-    [TestFixture]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
     public class AddModifierTests
     {
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void AddModifier_AddModifierI_RemovesCase()
         {
             VerbalExpressions verbEx = VerbalExpressions.DefaultExpression;
@@ -17,7 +17,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsTrue(verbEx.IsMatch("TESTSTRING"));
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void AddModifier_AddModifierM_Multiline()
         {
             //Arrange
@@ -31,7 +31,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsTrue(verbEx.Test(text));
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void AddModifier_AddModifierS_SingleLine()
         {
             //Arrange
@@ -52,7 +52,7 @@ namespace VerbalExpressionsUnitTests
                 "The dot matches a single character and line break characters.");
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void AddModifier_AddModifierX_IgnoreWhitspace()
         {
             VerbalExpressions verbEx = VerbalExpressions.DefaultExpression;

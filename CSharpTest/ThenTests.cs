@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace VerbalExpressionsUnitTests
 {
-    [TestFixture]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
     public class ThenTests
     {
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void Then_VerbalExpressionsEmail_DoesMatchEmail()
         {
             var verbEx = VerbalExpressions.DefaultExpression;
@@ -16,7 +16,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsTrue(isMatch, "Should match email address");
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void Then_VerbalExpressionsEmail_DoesNotMatchUrl()
         {
             var verbEx = VerbalExpressions.DefaultExpression;
@@ -26,7 +26,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsFalse(isMatch, "Should not match url address");
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void Then_VerbalExpressionsUrl_DoesMatchUrl()
         {
             var verbEx = VerbalExpressions.DefaultExpression;
@@ -38,7 +38,7 @@ namespace VerbalExpressionsUnitTests
             Assert.IsTrue(verbEx.IsMatch("http://google.com"), "Should match url address");
         }
 
-        [Test]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void Then_VerbalExpressionsUrl_DoesNotMatchEmail()
         {
             var verbEx = VerbalExpressions.DefaultExpression;
