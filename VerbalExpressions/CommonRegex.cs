@@ -42,9 +42,7 @@ namespace CSharpVerbalExpressions
             this.name = name;
             this.value = value;
         }
-        static CommonRegex()
-        {
-        }
+        
         #endregion Constructors
     }
 }
